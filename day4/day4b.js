@@ -1,4 +1,5 @@
 fs = require('fs');
+var cypher = require('./cypher');
 
 function extractParts(str){
     var expr = /([-a-z]+)-([0-9]+)\[([a-z]{5})\]/g;
@@ -8,6 +9,10 @@ function extractParts(str){
         id: arr[2],
         checksum: arr[3]
     }
+}
+
+function decypher(name, id) {
+
 }
 
 function calculateChecksum(room) {
@@ -43,7 +48,7 @@ function calculateChecksum(room) {
 
 fs.readFile('input.txt', 'utf8', function(err, data) {
     if (err) return console.log(err);
-
+    
     //data = 'aaaaa-bbb-z-y-x-123[abxyz]\na-b-c-d-e-f-g-h-987[abcde]\nnot-a-real-room-404[oarel]\ntotally-real-room-200[decoy]';
     //data = 'aczupnetwp-mfyyj-opalcexpye-977[peyac]\nqzchnzbshud-cxd-trdq-sdrshmf-105[jqexn]\nmolgbzqfib-bdd-mrozexpfkd-289[bdfmo]';
     //data = 'hqcfqwydw-uww-iuhlysui-894[dcqnf]\nmvydjvxodqz-xviyt-rjmfncjk-421[jvdmx]\nfroruixo-hjj-vhuylfhv-569[hfjor]\nfroruixo-hjj-ghyhorsphqw-855[horjf]';
