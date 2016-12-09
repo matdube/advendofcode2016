@@ -12,7 +12,7 @@ function extractParts(str){
 }
 
 function decypher(name, id) {
-
+    return cypher.caesarShift(name, parseInt(id));
 }
 
 function calculateChecksum(room) {
@@ -56,6 +56,7 @@ fs.readFile('input.txt', 'utf8', function(err, data) {
     var rooms = data.split('\n');
 
     var sumOfIds = 0;
+    var decryptedNames = [];
 
     for (var i = 0; i < rooms.length; i++) {        
         if (typeof rooms[i] !== 'undefined') {
@@ -63,10 +64,13 @@ fs.readFile('input.txt', 'utf8', function(err, data) {
             var checksum = calculateChecksum(room.name);
             if (room.checksum == calculateChecksum(room.name)) {
                 sumOfIds = sumOfIds + parseInt(room.id);
+                decryptedNames.push({ name: decypher(room.name, room.id), id: room.id});
             }
         }
     }
 
     console.log(sumOfIds);
+
+    console.log(decryptedNames);
     
 });

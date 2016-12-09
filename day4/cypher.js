@@ -34,9 +34,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org/>
 */
 
-module.exports = {
 
-  caesarShift: function(str, amount) {
+
+  var caesarShift = function(str, amount) {
 
 	// Wrap the amount
 	if (amount < 0)
@@ -76,4 +76,7 @@ module.exports = {
 	return output;
 
     }
+
+module.exports = {
+    caesarShift: caesarShift 
 }
